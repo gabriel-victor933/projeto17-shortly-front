@@ -1,0 +1,66 @@
+import { useEffect, useState } from "react"
+import { styled } from "styled-components"
+import img2 from "../assets/imgs/Vector.png"
+
+export default function Ranking(){
+
+    return (
+        <Container>
+            <div className="logo">
+                <img src={img2} alt="img"/>
+                <h1>Ranking</h1>    
+            </div>
+            <div className="rank">
+                <p>1. Fulaninha - 32 links - 1.703.584 visualizações</p>
+            </div>
+        </Container>
+    )
+}
+
+const Container = styled.div`
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0px 15%;
+        margin: 60px 0px;
+
+    .rank {
+        background: #FFFFFF;
+        border: 1px solid rgba(120, 177, 89, 0.25);
+        box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
+        border-radius: 24px 24px 0px 0px;
+        padding: 10px;
+
+        p {
+            font-family: 'Lexend Deca';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 28px;
+            color: #000000;
+        }
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    img {
+        width: 56px;
+        height: 50px;
+        margin: 0px 5px;
+    }
+
+    h1 {
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 45px;
+        color: #000000;
+        margin: 0px 5px;
+    }
+`
