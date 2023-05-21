@@ -50,6 +50,11 @@ export const Global = createGlobalStyle`
 	*{
 		background: #FFFFFF;
 		box-sizing: border-box;
+		
+	}
+
+	body {
+		padding: 0px 15%;
 	}
 	
 `
