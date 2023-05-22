@@ -47,7 +47,7 @@ export default function Links({links, getLinks, setLinks}){
                 <Section key={link.id}>
                     <div className="infos">
                         <p>{link.url}</p>
-                        <p>{link.shortUrl}</p>
+                        <p>link: <a href={`https://shortlyapi-fxb5.onrender.com/urls/open/${link.shortUrl}`}>{link.shortUrl}</a></p>
                         <p>Quantidade de visitantes: {link.visitCount}</p>
                     </div>
                     <div className="delete">
@@ -92,13 +92,15 @@ const Section = styled.div`
         padding-left: 10px;
         padding-right: 30px;
 
-        p {
+        p,a {
             background-color:transparent;
             font-weight: 400;
             font-size: 14px;
             line-height: 18px;
             color: #FFFFFF;
         }
+
+        
     }
 
 `
