@@ -1,15 +1,27 @@
 import HeaderLogin from "../components/HeaderLogin"
 import { styled } from "styled-components"
 import { useRef } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function SignUp(){
 
-    const formRef = useRef({email: "",password:"", name:"",confirmpassword:""})
+    const formRef = useRef({email: "",password:"", name:"",confirmPassword:""})
+    const navigate = useNavigate()
 
     function handleSubmit(e){
         e.preventDefault()
-
-        console.log(formRef)
+        console.log(formRef.current)
+       axios.post("https://shortlyapi-fxb5.onrender.com/signup",formRef.current)
+       .then((data)=>{
+        console.log(data)
+        alert("usuario cadastrado com sucesso!")
+        navigate("/signin")
+       })
+       .catch((err)=>{
+        
+        alert(err.response.data)
+       })
     }
 
     return(
@@ -19,7 +31,7 @@ export default function SignUp(){
             <input placeholder="Nome" type="text" onChange={(e)=> formRef.current.name = e.target.value} required/> 
             <input placeholder="E-mail" type="email" onChange={(e)=> formRef.current.email = e.target.value} required/>
             <input placeholder="Senha" type="password" onChange={(e)=> formRef.current.password = e.target.value} required/>
-            <input placeholder="Senha" type="password" onChange={(e)=> formRef.current.confirmpassword = e.target.value} required/>
+            <input placeholder="Senha" type="password" onChange={(e)=> formRef.current.confirmPassword = e.target.value} required/>
             <input type="submit" placeholder="Entrar" value="Entrar" className="submit"/>
         </Page>
         </>
@@ -65,6 +77,10 @@ const Page = styled.form`
         font-weight: 700;
         font-size: 14px;
         line-height: 18px;
+
+        &:hover{
+            transform: scale(1.1)
+        }
     }
 `
 
