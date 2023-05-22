@@ -1,8 +1,21 @@
 import { useEffect, useState } from "react"
 import { styled } from "styled-components"
 import img2 from "../assets/imgs/Vector.png"
+import axios from "axios"
 
 export default function Ranking(){
+
+    const [rank,setRank] = useState([])
+
+    useEffect(()=>{
+
+        axios.get("https://shortlyapi-fxb5.onrender.com/ranking")
+        .then((res)=>{
+            setRank(res.data)
+        })
+    },[])
+
+    console.log(rank)
 
     return (
         <Container>
@@ -10,8 +23,8 @@ export default function Ranking(){
                 <img src={img2} alt="img"/>
                 <h1>Ranking</h1>    
             </div>
-            <div className="rank">
-                <p>1. Fulaninha - 32 links - 1.703.584 visualizações</p>
+            <div className="rank" >
+            {rank.map((p,i)=> <p key={p.id}>{i + 1}. {p.name} - {p.linksCount} links - {p.visitCount} visualizações</p>)}
             </div>
         </Container>
     )
@@ -38,6 +51,7 @@ const Container = styled.div`
             font-size: 22px;
             line-height: 28px;
             color: #000000;
+            margin: 6px;
         }
     }
 

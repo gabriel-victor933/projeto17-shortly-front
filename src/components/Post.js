@@ -1,11 +1,46 @@
+import { useEffect, useRef } from "react"
 import { styled } from "styled-components"
+import axios from "axios"
 
-export default function Post(){
+export default function Post({getLinks}){
+
+    const postRef = useRef({url:""})
+
+    useEffect(()=>{
+
+        function handleEvent(e){
+            if(e.key == "Enter") handlepost()
+        }
+
+        document.addEventListener("keydown",handleEvent)
+
+        return ()=>{
+            document.removeEventListener("keydown",handleEvent)
+        }
+    },[])
+
+    function handlepost(){
+        
+        const token = localStorage.getItem("token")
+
+        const config = {headers: {"Authorization": `Bearer ${token}`}}
+
+        axios.post("https://shortlyapi-fxb5.onrender.com/urls/shorten",postRef.current,config)
+        .then((res)=>{
+            getLinks(token)
+            alert(`URL encurtada. \nid: ${res.data.id} \nshortURL: ${res.data.shortUrl}`)
+            getLinks(token)
+        })
+        .catch((err)=>{
+            console.log(err)
+            alert(err.response.data)
+        })
+    }
 
     return (
         <Section>
-            <input placeholder="Links que cabem no bolso"/>
-            <button>Encurtar link</button>
+            <input type="url" placeholder="Links que cabem no bolso" onChange={(e)=>postRef.current.url = e.target.value}/>
+            <button onClick={handlepost}>Encurtar link</button>
         </Section>
     )
 }

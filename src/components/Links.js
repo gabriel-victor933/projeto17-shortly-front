@@ -1,19 +1,62 @@
 import { styled } from "styled-components"
 import { BsFillTrashFill } from "react-icons/bs";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export default function Links(){
+export default function Links({links, getLinks, setLinks}){
+
+    const navigate = useNavigate()
+
+    
+
+    useEffect(()=>{
+        const token = localStorage.getItem("token")
+
+        if(!token) navigate("/")
+
+        getLinks(token)
+    },[])
+
+
+
+    function handleDelete(id){
+
+        const token = localStorage.getItem("token")
+        const config = {headers: {"Authorization": `Bearer ${token}`}}
+        axios.delete(`https://shortlyapi-fxb5.onrender.com/urls/${id}`,config)
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            alert(err.response.data)
+            const token = localStorage.getItem("token")
+            getLinks(token)
+        })
+
+        const newLinks = links.filter((link)=> link.id !== id)
+        setLinks(newLinks)
+    }
+
 
     return (
-        <Section>
-            <div className="infos">
-                <p>http://www.google.com</p>
-                <p>e4251A</p>
-                <p>Quantidade de visitantes: 20</p>
-            </div>
-            <div className="delete">
-            <BsFillTrashFill size="22px" color="#EA4F4F"/>
-            </div>
-        </Section>
+        <>
+        
+        {links?.map((link)=>{
+            return (
+                <Section key={link.id}>
+                    <div className="infos">
+                        <p>{link.url}</p>
+                        <p>{link.shortUrl}</p>
+                        <p>Quantidade de visitantes: {link.visitCount}</p>
+                    </div>
+                    <div className="delete">
+                        <BsFillTrashFill size="22px" color="#EA4F4F" onClick={()=>handleDelete(link.id)}/>
+                    </div>
+                </Section>
+            )
+        })}
+        </>
     )
 }
 
@@ -24,6 +67,7 @@ const Section = styled.div`
     display: flex;
     border: 1px solid rgba(120, 177, 89, 0.25);
     border-radius: 12px;
+    margin: 21px 0px;
 
     div {
         display: flex;
