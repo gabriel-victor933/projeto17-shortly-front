@@ -50,6 +50,9 @@ export const Global = createGlobalStyle`
 	*{
 		background: #FFFFFF;
 		box-sizing: border-box;
+
+		font-family: 'Lexend Deca';
+		font-style: normal
 		
 	}
 

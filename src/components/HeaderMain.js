@@ -2,18 +2,21 @@ import img from "../assets/imgs/Logo.png"
 import { styled } from "styled-components"
 import { useNavigate } from "react-router-dom"
 
-export default function HeaderLogin(){
+export default function HeaderMain(){
 
     const navigate = useNavigate()
+
+    const nome = ""
 
     return(
         <Container>
             <div className="sign">
-                <p onClick={()=>navigate("/signin")} className="in">Entrar</p>
-                <p onClick={()=>navigate("/signup")} className="up">Cadastrar-se</p>
+                <p className="name">Seja bem vindo(a), {nome || "Pessoa"}</p>
+                <p onClick={()=>navigate("/home")} className="up">Home</p>
+                <p onClick={()=>navigate("/ranking")} className="up">Ranking</p>
+                <p onClick={()=>navigate("/ranking")} className="up">Sair</p>
             </div>
             <img src={img} alt="logo" onClick={()=>navigate("/")}/>
-            
         </Container>
     )
 }
@@ -45,18 +48,21 @@ const Container = styled.div`
             line-height: 18px;
             margin: 10px;
 
-            &:hover{
-                transform: scale(1.1);
-                cursor: pointer;
-            }
+            
         }
 
-        .in {
+        .name {
+            width: 100%;
             color: #5D9040;
+            justify-self: start;
             }
 
             .up {
             color: #9C9C9C;
+            &:hover{
+                transform: scale(1.1);
+                cursor: pointer;
+            }
             }
     }
 `
