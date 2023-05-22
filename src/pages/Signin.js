@@ -1,15 +1,25 @@
 import { useRef } from "react"
 import HeaderLogin from "../components/HeaderLogin"
 import { styled } from "styled-components"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function Signin(){
 
     const formRef = useRef({email: "",password:""})
+    const navigate = useNavigate()
 
     function handleSubmit(e){
         e.preventDefault()
 
-        console.log(formRef)
+        axios.post("https://shortlyapi-fxb5.onrender.com/signin",formRef.current)
+        .then((res)=>{
+            localStorage.setItem("token",res.data.token)
+            navigate("/home")
+        })
+        .catch((err)=>{
+            alert(err.response.data)
+        })
     }
 
     return(
@@ -63,6 +73,10 @@ const Page = styled.form`
         font-weight: 700;
         font-size: 14px;
         line-height: 18px;
+
+        &:hover {
+            transform: scale(1.1)
+        }
     }
 `
 
