@@ -12,7 +12,7 @@ export default function SignUp(){
     function handleSubmit(e){
         e.preventDefault()
         console.log(formRef.current)
-       axios.post("https://shortlyapi-fxb5.onrender.com/signup",formRef.current)
+       axios.post(`${process.env.REACT_APP_API_URL}/signup`,formRef.current)
        .then((data)=>{
         console.log(data)
         alert("usuario cadastrado com sucesso!")

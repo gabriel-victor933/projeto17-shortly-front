@@ -11,7 +11,7 @@ export default function Home(){
     function getLinks(token){
         const config = {headers: {"Authorization": `Bearer ${token}`}}
 
-        axios.get("https://shortlyapi-fxb5.onrender.com/users/me",config)
+        axios.get(`${process.env.REACT_APP_API_URL}/users/me`,config)
         .then((res)=>{
             //console.log(res)
             console.log(res)

@@ -25,7 +25,7 @@ export default function Post({getLinks}){
 
         const config = {headers: {"Authorization": `Bearer ${token}`}}
 
-        axios.post("https://shortlyapi-fxb5.onrender.com/urls/shorten",postRef.current,config)
+        axios.post(`${process.env.REACT_APP_API_URL}/urls/shorten`,postRef.current,config)
         .then((res)=>{
             getLinks(token)
             alert(`URL encurtada. \nid: ${res.data.id} \nshortURL: ${res.data.shortUrl}`)

@@ -24,7 +24,7 @@ export default function Links({links, getLinks, setLinks}){
 
         const token = localStorage.getItem("token")
         const config = {headers: {"Authorization": `Bearer ${token}`}}
-        axios.delete(`https://shortlyapi-fxb5.onrender.com/urls/${id}`,config)
+        axios.delete(`${process.env.REACT_APP_API_URL}/urls/${id}`,config)
         .then((res)=>{
             console.log(res)
         })

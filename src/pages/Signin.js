@@ -12,7 +12,7 @@ export default function Signin(){
     function handleSubmit(e){
         e.preventDefault()
 
-        axios.post("https://shortlyapi-fxb5.onrender.com/signin",formRef.current)
+        axios.post(`${process.env.REACT_APP_API_URL}/signin`,formRef.current)
         .then((res)=>{
             localStorage.setItem("token",res.data.token)
             navigate("/home")

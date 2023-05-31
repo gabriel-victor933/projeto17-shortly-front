@@ -9,7 +9,7 @@ export default function Ranking(){
 
     useEffect(()=>{
 
-        axios.get("https://shortlyapi-fxb5.onrender.com/ranking")
+        axios.get(`${process.env.REACT_APP_API_URL}/ranking`)
         .then((res)=>{
             setRank(res.data)
         })
