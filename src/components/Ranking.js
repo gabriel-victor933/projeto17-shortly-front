@@ -11,7 +11,12 @@ export default function Ranking(){
 
         axios.get(`${process.env.REACT_APP_API_URL}/ranking`)
         .then((res)=>{
+            console.log(res)
             setRank(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+            setRank([])
         })
     },[])
 

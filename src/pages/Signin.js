@@ -14,6 +14,7 @@ export default function Signin(){
 
         axios.post(`${process.env.REACT_APP_API_URL}/signin`,formRef.current)
         .then((res)=>{
+            console.log(res.data)
             localStorage.setItem("token",res.data.token)
             navigate("/home")
         })

@@ -10,12 +10,24 @@ O front-end do Shortly possui as seguintes funcionalidades:
 - Possibilidade de personalização do link encurtado.
 - Interface responsiva para uma experiência de usuário agradável em diferentes dispositivos.
 
-## Configuração do ambiente:
-1. Clone o repositório do projeto:
-2. Instale as dependências do projeto:
-`cd projeto17-shortly-front
-npm install`
+<p align="center">
+  <img width="400" height="450" src="shortly1.gif"/>
+</p>
 
-3. Crie um arquivo `.env` e insira o link do servidor em uma variavel chamada `REACT_APP_API_URL`.
-4. Inicie o servidor de desenvolvimento: 
-`npm start`
+<p align="center">
+  <img width="400" height="450" src="shortly.gif"/>
+</p>
+
+
+
+## Configuração do ambiente:
+1. Clone os repositórios dos projeto (clique <a href="https://github.com/gabriel-victor933/projeto17-shortly">aqui</a> para acesar o backend):
+2. Instale as dependências do projeto: `npm i`;
+3. Crie um arquivo `.env` no repositório do frontend e insira o link do servidor em uma variavel chamada 
+`REACT_APP_API_URL=http://localhost:5000`.
+4. Com o postgres Instalado crie um banco de dados chamado "shortly_db" e execute o dump como os comandos:
+- `sudo -i -u postgres`
+- `psql shortly_db < dump.sql`
+5. Crie um arquivo `.env` no repositório do backend e insira a variavél: 
+`DATABASE_URL = postgresql://postgres_user:postgres_password@localhost:5432/shortly_db`
+6. Inicio o servidor usando `npm run dev` e em seguida inicie o front usando `npm run start`;

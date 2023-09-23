@@ -6,7 +6,6 @@ export default function HeaderMain(){
 
     const navigate = useNavigate()
 
-    const name = localStorage.getItem("name") || "Pessoa"
 
     function handleQuit(){
         localStorage.removeItem("token")
@@ -16,7 +15,7 @@ export default function HeaderMain(){
     return(
         <Container>
             <div className="sign">
-                <p className="name">Seja bem vindo(a) {name}</p>
+                <p className="name">Seja bem vindo(a)</p>
                 <p onClick={()=>navigate("/home")} className="up">Home</p>
                 <p onClick={()=>navigate("/ranking")} className="up">Ranking</p>
                 <p onClick={handleQuit} className="up">Sair</p>
