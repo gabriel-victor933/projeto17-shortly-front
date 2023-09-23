@@ -11,11 +11,11 @@ O front-end do Shortly possui as seguintes funcionalidades:
 - Interface responsiva para uma experiência de usuário agradável em diferentes dispositivos.
 
 <p align="center">
-  <img width="400" height="450" src="shortly1.gif"/>
+  <img width="400" height="450" src="Shortly1.gif"/>
 </p>
 
 <p align="center">
-  <img width="400" height="450" src="shortly.gif"/>
+  <img width="400" height="450" src="Shortly.gif"/>
 </p>
 
 
